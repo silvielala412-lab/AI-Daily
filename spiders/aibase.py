@@ -66,8 +66,8 @@ class AIBaseSpider(BaseSpider):
             href = a.css("::attr(href)").get()
             if not href: continue
             
-            # 修复：不加 /zh 前缀，因为 href 已经是 /news/xxxxx 或 /daily/xxxxx
-            detail_url = "https://www.aibase.com" + href
+            # href 格式为 /news/xxxxx 或 /daily/xxxxx，加 /zh 前缀访问中文版
+            detail_url = "https://www.aibase.com/zh" + href
             
             if detail_url in seen_urls: continue
             seen_urls.add(detail_url)
